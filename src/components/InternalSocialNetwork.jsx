@@ -8,7 +8,7 @@ const InternalSocialNetwork = () => {
   const [showEditProfile, setShowEditProfile] = useState(false)
   const [showNotifications, setShowNotifications] = useState(false)
 
-  // Sample data
+  // Sample data - Rich and diverse content
   const posts = [
     {
       id: 1,
@@ -53,6 +53,209 @@ const InternalSocialNetwork = () => {
         views: 89
       },
       tags: ['#Survey', '#EmployeeEngagement']
+    },
+    {
+      id: 3,
+      author: {
+        name: 'Nguyễn Văn Đức',
+        role: 'CEO',
+        avatar: '👨‍💼',
+        time: '6 giờ trước'
+      },
+      content: '🎊 THÔNG BÁO QUAN TRỌNG: VEGA Life đã chính thức ký hợp đồng với 3 khách hàng lớn mới! Doanh thu Q4 dự kiến tăng 40%. Cảm ơn tất cả team đã nỗ lực! #CompanyGrowth #Success #NewClients',
+      image: '📈',
+      engagement: {
+        likes: 89,
+        comments: 25,
+        shares: 15,
+        views: 234
+      },
+      tags: ['#CompanyGrowth', '#Success', '#NewClients']
+    },
+    {
+      id: 4,
+      author: {
+        name: 'Phạm Thị Lan',
+        role: 'Finance Director',
+        avatar: '👩‍💼',
+        time: '8 giờ trước'
+      },
+      content: '💰 Báo cáo tài chính tháng 12: Doanh thu đạt 2.8 tỷ VND (+15% so với tháng trước). Lợi nhuận tăng 22%. Chúc mừng team đã vượt target! #Finance #Growth #Achievement',
+      chart: {
+        type: 'bar',
+        data: [
+          { month: 'T10', revenue: 2.4, profit: 0.6 },
+          { month: 'T11', revenue: 2.6, profit: 0.7 },
+          { month: 'T12', revenue: 2.8, profit: 0.8 }
+        ]
+      },
+      engagement: {
+        likes: 67,
+        comments: 19,
+        shares: 12,
+        views: 178
+      },
+      tags: ['#Finance', '#Growth', '#Achievement']
+    },
+    {
+      id: 5,
+      author: {
+        name: 'Hoàng Minh Tuấn',
+        role: 'Tech Lead',
+        avatar: '👨‍💻',
+        time: '10 giờ trước'
+      },
+      content: '🚀 Cập nhật hệ thống: Chúng ta vừa triển khai AI Content Generator - công cụ hỗ trợ tạo nội dung tự động. Demo sẽ có trong cuộc họp team tuần này! #Innovation #AI #Technology',
+      image: '🤖',
+      engagement: {
+        likes: 54,
+        comments: 16,
+        shares: 9,
+        views: 145
+      },
+      tags: ['#Innovation', '#AI', '#Technology']
+    },
+    {
+      id: 6,
+      author: {
+        name: 'Trần Thị Mai',
+        role: 'Senior Video Producer',
+        avatar: '👩',
+        time: '12 giờ trước'
+      },
+      content: '📹 Chia sẻ kinh nghiệm: 5 tips để tạo video viral trên YouTube. Đã áp dụng thành công cho dự án "Cuộc sống số" và đạt 500K views trong 1 tuần! #Tips #YouTube #Viral',
+      image: '🎬',
+      engagement: {
+        likes: 78,
+        comments: 23,
+        shares: 18,
+        views: 267
+      },
+      tags: ['#Tips', '#YouTube', '#Viral']
+    },
+    {
+      id: 7,
+      author: {
+        name: 'Lê Văn Hùng',
+        role: 'Marketing Manager',
+        avatar: '👨',
+        time: '1 ngày trước'
+      },
+      content: '📊 Phân tích xu hướng: Video ngắn (Short-form content) đang chiếm ưu thế trên TikTok và YouTube Shorts. Team cần tập trung vào format này trong Q1/2024. #Trend #Marketing #Strategy',
+      chart: {
+        type: 'line',
+        data: [
+          { platform: 'TikTok', growth: 85 },
+          { platform: 'YouTube Shorts', growth: 72 },
+          { platform: 'Instagram Reels', growth: 68 },
+          { platform: 'Facebook Video', growth: 45 }
+        ]
+      },
+      engagement: {
+        likes: 43,
+        comments: 14,
+        shares: 7,
+        views: 156
+      },
+      tags: ['#Trend', '#Marketing', '#Strategy']
+    },
+    {
+      id: 8,
+      author: {
+        name: 'Nguyễn Thị Hoa',
+        role: 'HR Specialist',
+        avatar: '👩',
+        time: '1 ngày trước'
+      },
+      content: '🎓 Chương trình đào tạo Q1/2024: Khởi động "VEGA Academy" - nơi CBNV có thể học kỹ năng mới và phát triển bản thân. Budget 50M VND cho toàn công ty! #Training #Development #Academy',
+      image: '🎓',
+      engagement: {
+        likes: 56,
+        comments: 21,
+        shares: 11,
+        views: 189
+      },
+      tags: ['#Training', '#Development', '#Academy']
+    },
+    {
+      id: 9,
+      author: {
+        name: 'Phạm Đức Thắng',
+        role: 'Operations Manager',
+        avatar: '👨‍💼',
+        time: '2 ngày trước'
+      },
+      content: '🏢 Thông báo văn phòng: Văn phòng mới tại Quận 7 sẽ khai trương vào 15/1/2024. Diện tích 500m² với đầy đủ tiện nghi hiện đại. Team Video Production sẽ chuyển đến đây! #Office #Expansion #NewSpace',
+      image: '🏢',
+      engagement: {
+        likes: 41,
+        comments: 17,
+        shares: 6,
+        views: 134
+      },
+      tags: ['#Office', '#Expansion', '#NewSpace']
+    },
+    {
+      id: 10,
+      author: {
+        name: 'Bùi Thị Linh',
+        role: 'Creative Director',
+        avatar: '👩‍🎨',
+        time: '2 ngày trước'
+      },
+      content: '🎨 Cuộc thi thiết kế nội bộ: "VEGA Creative Challenge 2024" - Tạo logo cho sản phẩm mới. Giải nhất: 10M VND + 1 tuần nghỉ phép. Deadline: 31/1/2024. #Contest #Creative #Design',
+      image: '🎨',
+      engagement: {
+        likes: 73,
+        comments: 28,
+        shares: 14,
+        views: 198
+      },
+      tags: ['#Contest', '#Creative', '#Design']
+    },
+    {
+      id: 11,
+      author: {
+        name: 'Vũ Minh Quang',
+        role: 'Client Success Manager',
+        avatar: '👨',
+        time: '3 ngày trước'
+      },
+      content: '🤝 Case study thành công: Dự án "Brand Storytelling" cho khách hàng ABC đã tăng engagement 300% và conversion rate 45%. Chia sẻ chi tiết trong slide deck! #CaseStudy #Success #Client',
+      chart: {
+        type: 'funnel',
+        data: [
+          { stage: 'Awareness', value: 100 },
+          { stage: 'Interest', value: 75 },
+          { stage: 'Consideration', value: 50 },
+          { stage: 'Purchase', value: 25 }
+        ]
+      },
+      engagement: {
+        likes: 62,
+        comments: 19,
+        shares: 13,
+        views: 167
+      },
+      tags: ['#CaseStudy', '#Success', '#Client']
+    },
+    {
+      id: 12,
+      author: {
+        name: 'Đỗ Thị Nga',
+        role: 'Quality Assurance',
+        avatar: '👩',
+        time: '3 ngày trước'
+      },
+      content: '✅ Quy trình mới: Áp dụng "Quality Gate" cho tất cả dự án video. Mỗi video sẽ qua 3 vòng review trước khi deliver. Mục tiêu: 99% client satisfaction! #Quality #Process #Improvement',
+      image: '✅',
+      engagement: {
+        likes: 38,
+        comments: 12,
+        shares: 5,
+        views: 123
+      },
+      tags: ['#Quality', '#Process', '#Improvement']
     }
   ]
 
@@ -109,13 +312,110 @@ const InternalSocialNetwork = () => {
               </div>
             </div>
             <div className="flex items-center space-x-4">
-              <button 
-                onClick={() => setShowNotifications(true)}
-                className="p-2 text-gray-600 hover:text-blue-600 transition-colors relative"
-              >
-                🔔
-                <span className="absolute -top-1 -right-1 h-3 w-3 bg-red-500 rounded-full text-xs text-white flex items-center justify-center">3</span>
-              </button>
+              <div className="relative">
+                <button 
+                  onClick={() => setShowNotifications(!showNotifications)}
+                  className="p-2 text-gray-600 hover:text-blue-600 transition-colors relative"
+                >
+                  🔔
+                  <span className="absolute -top-1 -right-1 h-3 w-3 bg-red-500 rounded-full text-xs text-white flex items-center justify-center">3</span>
+                </button>
+                
+                {/* Notification Dropdown */}
+                {showNotifications && (
+                  <div className="absolute right-0 top-12 w-80 bg-white rounded-xl shadow-xl border border-gray-200 z-50">
+                    <div className="p-4 border-b border-gray-100">
+                      <div className="flex items-center justify-between">
+                        <h3 className="text-lg font-bold text-gray-900">Thông báo</h3>
+                        <button 
+                          onClick={() => setShowNotifications(false)}
+                          className="text-gray-400 hover:text-gray-600"
+                        >
+                          ✕
+                        </button>
+                      </div>
+                    </div>
+                    
+                    <div className="max-h-96 overflow-y-auto">
+                      <div className="p-3 hover:bg-gray-50 border-b border-gray-100 cursor-pointer">
+                        <div className="flex items-start">
+                          <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                            <span className="text-blue-600">🎉</span>
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <p className="font-semibold text-gray-900 text-sm">Chúc mừng!</p>
+                            <p className="text-sm text-gray-600 mt-1">Bạn đã được đề xuất cho giải "Nhân viên xuất sắc tháng"</p>
+                            <p className="text-xs text-gray-400 mt-2">2 giờ trước</p>
+                          </div>
+                          <div className="w-2 h-2 bg-blue-500 rounded-full flex-shrink-0 mt-2"></div>
+                        </div>
+                      </div>
+                      
+                      <div className="p-3 hover:bg-gray-50 border-b border-gray-100 cursor-pointer">
+                        <div className="flex items-start">
+                          <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                            <span className="text-green-600">📊</span>
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <p className="font-semibold text-gray-900 text-sm">Khảo sát mới</p>
+                            <p className="text-sm text-gray-600 mt-1">Khảo sát hài lòng Q4 đã sẵn sàng</p>
+                            <p className="text-xs text-gray-400 mt-2">1 ngày trước</p>
+                          </div>
+                          <div className="w-2 h-2 bg-green-500 rounded-full flex-shrink-0 mt-2"></div>
+                        </div>
+                      </div>
+                      
+                      <div className="p-3 hover:bg-gray-50 border-b border-gray-100 cursor-pointer">
+                        <div className="flex items-start">
+                          <div className="w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                            <span className="text-yellow-600">💡</span>
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <p className="font-semibold text-gray-900 text-sm">Ý tưởng được đánh giá</p>
+                            <p className="text-sm text-gray-600 mt-1">Ý tưởng "AI Content Generator" đã được team review</p>
+                            <p className="text-xs text-gray-400 mt-2">3 ngày trước</p>
+                          </div>
+                          <div className="w-2 h-2 bg-yellow-500 rounded-full flex-shrink-0 mt-2"></div>
+                        </div>
+                      </div>
+                      
+                      <div className="p-3 hover:bg-gray-50 border-b border-gray-100 cursor-pointer">
+                        <div className="flex items-start">
+                          <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                            <span className="text-purple-600">📅</span>
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <p className="font-semibold text-gray-900 text-sm">Lịch họp</p>
+                            <p className="text-sm text-gray-600 mt-1">Cuộc họp team Video Production lúc 14:00 hôm nay</p>
+                            <p className="text-xs text-gray-400 mt-2">5 giờ trước</p>
+                          </div>
+                          <div className="w-2 h-2 bg-purple-500 rounded-full flex-shrink-0 mt-2"></div>
+                        </div>
+                      </div>
+                      
+                      <div className="p-3 hover:bg-gray-50 cursor-pointer">
+                        <div className="flex items-start">
+                          <div className="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                            <span className="text-red-600">⚠️</span>
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <p className="font-semibold text-gray-900 text-sm">Nhắc nhở</p>
+                            <p className="text-sm text-gray-600 mt-1">Báo cáo tháng 12 cần nộp trước 31/12</p>
+                            <p className="text-xs text-gray-400 mt-2">1 tuần trước</p>
+                          </div>
+                          <div className="w-2 h-2 bg-red-500 rounded-full flex-shrink-0 mt-2"></div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="p-4 border-t border-gray-100 bg-gray-50">
+                      <button className="w-full text-center text-blue-600 hover:text-blue-700 font-semibold text-sm">
+                        Xem tất cả thông báo
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
               <button className="p-2 text-gray-600 hover:text-blue-600 transition-colors">
                 ⚙️
               </button>
@@ -389,6 +689,7 @@ const InternalSocialNetwork = () => {
               </button>
             </div>
 
+
             {/* Company Information */}
             <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
               <h3 className="text-lg font-bold text-gray-900 mb-4">Thông tin công ty</h3>
@@ -555,51 +856,6 @@ const InternalSocialNetwork = () => {
         </div>
       )}
 
-      {/* Notifications Popup */}
-      {showNotifications && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-xl p-6 w-full max-w-md mx-4">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-bold text-gray-900">Thông báo</h3>
-              <button 
-                onClick={() => setShowNotifications(false)}
-                className="text-gray-400 hover:text-gray-600"
-              >
-                ✕
-              </button>
-            </div>
-            <div className="space-y-3">
-              <div className="flex items-start p-3 bg-blue-50 rounded-lg">
-                <div className="text-blue-500 mr-3">🎉</div>
-                <div>
-                  <p className="font-semibold text-gray-900">Chúc mừng!</p>
-                  <p className="text-sm text-gray-600">Bạn đã được đề xuất cho giải "Nhân viên xuất sắc tháng"</p>
-                  <p className="text-xs text-gray-400 mt-1">2 giờ trước</p>
-                </div>
-              </div>
-              <div className="flex items-start p-3 bg-green-50 rounded-lg">
-                <div className="text-green-500 mr-3">📊</div>
-                <div>
-                  <p className="font-semibold text-gray-900">Khảo sát mới</p>
-                  <p className="text-sm text-gray-600">Khảo sát hài lòng Q4 đã sẵn sàng</p>
-                  <p className="text-xs text-gray-400 mt-1">1 ngày trước</p>
-                </div>
-              </div>
-              <div className="flex items-start p-3 bg-yellow-50 rounded-lg">
-                <div className="text-yellow-500 mr-3">💡</div>
-                <div>
-                  <p className="font-semibold text-gray-900">Ý tưởng được đánh giá</p>
-                  <p className="text-sm text-gray-600">Ý tưởng "AI Content Generator" đã được team review</p>
-                  <p className="text-xs text-gray-400 mt-1">3 ngày trước</p>
-                </div>
-              </div>
-            </div>
-            <button className="w-full bg-gray-100 hover:bg-gray-200 text-gray-700 py-2 rounded-lg font-semibold transition-colors mt-4">
-              Xem tất cả
-            </button>
-          </div>
-        </div>
-      )}
     </div>
   )
 }

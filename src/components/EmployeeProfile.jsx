@@ -42,15 +42,101 @@ const EmployeeProfile = () => {
     { day: 13, type: 'weekend' }, { day: 14, type: 'weekend' }
   ]
 
+  // HR Policies & Benefits data
+  const hrPolicies = [
+    {
+      icon: '💰',
+      title: 'Lương thưởng',
+      description: '13th month salary + KPI bonus',
+      status: 'Active',
+      statusColor: 'blue'
+    },
+    {
+      icon: '🏥',
+      title: 'Bảo hiểm',
+      description: 'Social + Health + Accident',
+      status: '100%',
+      statusColor: 'green'
+    },
+    {
+      icon: '🏖️',
+      title: 'Nghỉ phép',
+      description: '12 ngày/năm + sick leave',
+      status: '8 còn lại',
+      statusColor: 'yellow'
+    },
+    {
+      icon: '🎓',
+      title: 'Đào tạo',
+      description: 'Budget 5M VND/năm',
+      status: '3.2M còn lại',
+      statusColor: 'purple'
+    }
+  ]
+
+  const hrDocuments = [
+    { icon: '📋', title: 'Quy chế công ty', type: 'PDF' },
+    { icon: '📄', title: 'Hướng dẫn nghỉ phép', type: 'PDF' },
+    { icon: '💼', title: 'Chính sách bảo hiểm', type: 'PDF' },
+    { icon: '📊', title: 'Bảng lương theo cấp bậc', type: 'Excel' }
+  ]
+
   const courses = [
     { name: 'Advanced Video Editing', progress: 100, status: 'Completed', icon: '🎥' },
     { name: 'YouTube Analytics', progress: 75, status: 'In Progress', icon: '📊' }
   ]
 
   const careerPath = [
-    { title: 'Junior Producer', status: 'Completed', icon: '✅' },
-    { title: 'Senior Producer', status: 'Current Position', icon: '⭐' },
-    { title: 'Lead Producer', status: 'Next Goal', icon: '🏆' }
+    { 
+      title: 'Junior Producer', 
+      status: 'Completed', 
+      icon: '✅',
+      completedDate: 'Tháng 3/2023',
+      requirements: [
+        'Hoàn thành khóa đào tạo cơ bản',
+        'Sản xuất 20+ video chất lượng',
+        'Đạt KPI 85% trong 3 tháng liên tiếp'
+      ],
+      achievements: [
+        'Video "Cuộc sống số" đạt 500K views',
+        'Nhận giải "Nhân viên mới xuất sắc"',
+        'Hoàn thành certification Adobe Premiere'
+      ]
+    },
+    { 
+      title: 'Senior Producer', 
+      status: 'Current Position', 
+      icon: '⭐',
+      startDate: 'Tháng 4/2023',
+      currentGoals: [
+        'Quản lý 3-5 dự án đồng thời',
+        'Mentor cho 2 junior producers',
+        'Đạt doanh thu 2B+ VND/tháng'
+      ],
+      progress: {
+        projectsManaged: 4,
+        teamMentored: 2,
+        monthlyRevenue: 1.8
+      }
+    },
+    { 
+      title: 'Lead Producer', 
+      status: 'Next Goal', 
+      icon: '🏆',
+      targetDate: 'Q2/2024',
+      requirements: [
+        'Quản lý team 5+ người',
+        'Tăng trưởng doanh thu 30%',
+        'Hoàn thành khóa Leadership',
+        'Đạt KPI 95% trong 6 tháng'
+      ],
+      milestones: [
+        { goal: 'Quản lý team 5+ người', current: 2, target: 5, progress: 40 },
+        { goal: 'Doanh thu 2.5B+ VND/tháng', current: 1.8, target: 2.5, progress: 72 },
+        { goal: 'Khóa Leadership', current: 0, target: 100, progress: 0 },
+        { goal: 'KPI 95%', current: 88, target: 95, progress: 93 }
+      ]
+    }
   ]
 
   const competencies = [
@@ -448,19 +534,140 @@ const EmployeeProfile = () => {
               {/* Career Progression */}
               <div>
                 <h4 className="text-lg font-semibold text-gray-900 mb-4">Lộ trình thăng tiến</h4>
-                <div className="space-y-3">
+                <div className="space-y-4">
                   {careerPath.map((path, index) => (
-                    <div key={index} className="flex items-center p-3 bg-gray-50 rounded-lg">
-                      <div className="text-2xl mr-4">{path.icon}</div>
-                      <div>
-                        <h5 className="font-semibold text-gray-900">{path.title}</h5>
-                        <p className={`text-sm ${
-                          path.status === 'Current Position' ? 'text-blue-600' :
-                          path.status === 'Completed' ? 'text-green-600' : 'text-gray-600'
+                    <div key={index} className={`p-4 rounded-xl border-2 ${
+                      path.status === 'Current Position' ? 'border-blue-200 bg-blue-50' :
+                      path.status === 'Completed' ? 'border-green-200 bg-green-50' : 
+                      'border-gray-200 bg-gray-50'
+                    }`}>
+                      {/* Header */}
+                      <div className="flex items-center mb-3">
+                        <div className={`text-3xl mr-4 p-2 rounded-full ${
+                          path.status === 'Current Position' ? 'bg-blue-100' :
+                          path.status === 'Completed' ? 'bg-green-100' : 
+                          'bg-gray-100'
                         }`}>
-                          {path.status}
-                        </p>
+                          {path.icon}
+                        </div>
+                        <div className="flex-1">
+                          <h5 className="font-bold text-gray-900 text-lg">{path.title}</h5>
+                          <div className="flex items-center space-x-4">
+                            <p className={`text-sm font-semibold ${
+                              path.status === 'Current Position' ? 'text-blue-600' :
+                              path.status === 'Completed' ? 'text-green-600' : 'text-gray-600'
+                            }`}>
+                              {path.status}
+                            </p>
+                            {path.completedDate && (
+                              <span className="text-xs text-gray-500">Hoàn thành: {path.completedDate}</span>
+                            )}
+                            {path.startDate && (
+                              <span className="text-xs text-gray-500">Bắt đầu: {path.startDate}</span>
+                            )}
+                            {path.targetDate && (
+                              <span className="text-xs text-gray-500">Mục tiêu: {path.targetDate}</span>
+                            )}
+                          </div>
+                        </div>
                       </div>
+
+                      {/* Content based on status */}
+                      {path.status === 'Completed' && (
+                        <div className="space-y-3">
+                          <div>
+                            <h6 className="font-semibold text-gray-800 mb-2">✅ Đã hoàn thành:</h6>
+                            <ul className="space-y-1">
+                              {path.requirements?.map((req, idx) => (
+                                <li key={idx} className="text-sm text-gray-600 flex items-center">
+                                  <span className="text-green-500 mr-2">✓</span>
+                                  {req}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                          <div>
+                            <h6 className="font-semibold text-gray-800 mb-2">🏆 Thành tích nổi bật:</h6>
+                            <ul className="space-y-1">
+                              {path.achievements?.map((achievement, idx) => (
+                                <li key={idx} className="text-sm text-gray-600 flex items-center">
+                                  <span className="text-yellow-500 mr-2">⭐</span>
+                                  {achievement}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
+                      )}
+
+                      {path.status === 'Current Position' && (
+                        <div className="space-y-3">
+                          <div>
+                            <h6 className="font-semibold text-gray-800 mb-2">🎯 Mục tiêu hiện tại:</h6>
+                            <ul className="space-y-1">
+                              {path.currentGoals?.map((goal, idx) => (
+                                <li key={idx} className="text-sm text-gray-600 flex items-center">
+                                  <span className="text-blue-500 mr-2">•</span>
+                                  {goal}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                          <div>
+                            <h6 className="font-semibold text-gray-800 mb-2">📊 Tiến độ hiện tại:</h6>
+                            <div className="grid grid-cols-3 gap-3">
+                              <div className="text-center p-2 bg-white rounded-lg">
+                                <div className="text-lg font-bold text-blue-600">{path.progress?.projectsManaged}</div>
+                                <div className="text-xs text-gray-600">Dự án</div>
+                              </div>
+                              <div className="text-center p-2 bg-white rounded-lg">
+                                <div className="text-lg font-bold text-blue-600">{path.progress?.teamMentored}</div>
+                                <div className="text-xs text-gray-600">Mentor</div>
+                              </div>
+                              <div className="text-center p-2 bg-white rounded-lg">
+                                <div className="text-lg font-bold text-blue-600">{path.progress?.monthlyRevenue}B</div>
+                                <div className="text-xs text-gray-600">Doanh thu</div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
+                      {path.status === 'Next Goal' && (
+                        <div className="space-y-3">
+                          <div>
+                            <h6 className="font-semibold text-gray-800 mb-2">📋 Yêu cầu để thăng tiến:</h6>
+                            <ul className="space-y-1">
+                              {path.requirements?.map((req, idx) => (
+                                <li key={idx} className="text-sm text-gray-600 flex items-center">
+                                  <span className="text-orange-500 mr-2">•</span>
+                                  {req}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                          <div>
+                            <h6 className="font-semibold text-gray-800 mb-2">📈 Tiến độ đạt được:</h6>
+                            <div className="space-y-2">
+                              {path.milestones?.map((milestone, idx) => (
+                                <div key={idx} className="bg-white p-3 rounded-lg">
+                                  <div className="flex justify-between items-center mb-1">
+                                    <span className="text-sm font-medium text-gray-800">{milestone.goal}</span>
+                                    <span className="text-xs text-gray-500">{milestone.current}/{milestone.target}</span>
+                                  </div>
+                                  <div className="w-full bg-gray-200 rounded-full h-2">
+                                    <div 
+                                      className="bg-gradient-to-r from-orange-400 to-orange-600 h-2 rounded-full transition-all duration-300"
+                                      style={{ width: `${milestone.progress}%` }}
+                                    ></div>
+                                  </div>
+                                  <div className="text-xs text-gray-500 mt-1">{milestone.progress}% hoàn thành</div>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      )}
                     </div>
                   ))}
                 </div>
@@ -600,6 +807,58 @@ const EmployeeProfile = () => {
                     <div className="w-3 h-3 bg-pink-300 rounded mr-1"></div>
                     <span>Nghỉ phép</span>
                   </div>
+                </div>
+              </div>
+
+              {/* HR Policies & Benefits */}
+              <div>
+                <h4 className="text-lg font-semibold text-gray-900 mb-4">Chính sách & Phúc lợi</h4>
+                <div className="space-y-3">
+                  {hrPolicies.map((policy, index) => (
+                    <div key={index} className={`flex items-center justify-between p-3 bg-${policy.statusColor}-50 rounded-lg`}>
+                      <div className="flex items-center">
+                        <span className={`text-${policy.statusColor}-600 mr-3`}>{policy.icon}</span>
+                        <div>
+                          <p className="font-semibold text-gray-900 text-sm">{policy.title}</p>
+                          <p className="text-xs text-gray-600">{policy.description}</p>
+                        </div>
+                      </div>
+                      <span className={`text-xs bg-${policy.statusColor}-100 text-${policy.statusColor}-800 px-2 py-1 rounded-full`}>
+                        {policy.status}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* HR Document Search */}
+              <div>
+                <h4 className="text-lg font-semibold text-gray-900 mb-4">Tra cứu hồ sơ & quy định</h4>
+                <div className="space-y-3">
+                  <div className="relative">
+                    <input 
+                      type="text" 
+                      placeholder="Tìm kiếm tài liệu, quy định..."
+                      className="w-full px-4 py-2 pl-10 bg-gray-50 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-colors"
+                    />
+                    <span className="absolute left-3 top-2.5 text-gray-400">🔍</span>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    {hrDocuments.map((doc, index) => (
+                      <button key={index} className="w-full text-left flex items-center justify-between p-2 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">
+                        <div className="flex items-center">
+                          <span className="text-blue-500 mr-3">{doc.icon}</span>
+                          <span className="text-sm">{doc.title}</span>
+                        </div>
+                        <span className="text-xs text-gray-400">{doc.type}</span>
+                      </button>
+                    ))}
+                  </div>
+                  
+                  <button className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-lg font-semibold text-sm transition-colors">
+                    Xem tất cả tài liệu
+                  </button>
                 </div>
               </div>
             </div>
