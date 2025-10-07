@@ -463,9 +463,9 @@ const InternalSocialNetwork = () => {
 
       <div className="max-w-7xl mx-auto px-6 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-          {/* Left Sidebar */}
-          <div className="lg:col-span-1">
-            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-6">
+          {/* Left Sidebar - Narrow */}
+          <div className="lg:col-span-1 space-y-6">
+            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
               <h3 className="text-lg font-bold text-gray-900 mb-4">Hành động nhanh</h3>
               <div className="space-y-3">
                 <button 
@@ -515,8 +515,8 @@ const InternalSocialNetwork = () => {
             </div>
           </div>
 
-          {/* Main Content */}
-          <div className="lg:col-span-2 space-y-6">
+          {/* Main Content - Wide */}
+          <div className="lg:col-span-3 space-y-6">
             {/* Top Banner */}
             <div className="relative bg-gradient-to-r from-purple-600 to-orange-500 rounded-xl overflow-hidden">
               <div className="absolute inset-0 bg-black bg-opacity-20"></div>

@@ -230,9 +230,9 @@ const EmployeeProfile = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Left Column */}
-          <div className="lg:col-span-2 space-y-8">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+          {/* Left Column - Wide */}
+          <div className="lg:col-span-3 space-y-6">
             {/* Salary & Benefits */}
             <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-6 backdrop-blur-sm">
               <h3 className="text-xl font-bold text-gray-900 mb-6">Lương & Phúc lợi</h3>
@@ -745,8 +745,8 @@ const EmployeeProfile = () => {
             </div>
           </div>
 
-          {/* Right Column */}
-          <div className="space-y-8">
+          {/* Right Column - Narrow */}
+          <div className="space-y-6">
             {/* Work Management */}
             <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-6 backdrop-blur-sm">
               <h3 className="text-xl font-bold text-gray-900 mb-6">Quản trị công việc</h3>
