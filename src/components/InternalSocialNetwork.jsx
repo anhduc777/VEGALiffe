@@ -463,194 +463,8 @@ const InternalSocialNetwork = () => {
 
       <div className="max-w-7xl mx-auto px-6 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-          {/* Left Sidebar - Narrow */}
-          <div className="lg:col-span-1 space-y-6">
-            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-              <h3 className="text-lg font-bold text-gray-900 mb-4">Hành động nhanh</h3>
-              <div className="space-y-3">
-                <button 
-                  onClick={() => setShowCreatePost(true)}
-                  className="w-full flex items-center p-3 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors"
-                >
-                  <span className="mr-3">➕</span>
-                  Tạo bài viết
-                </button>
-                <button 
-                  onClick={() => setShowShareIdea(true)}
-                  className="w-full flex items-center p-3 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition-colors"
-                >
-                  <span className="mr-3">💡</span>
-                  Chia sẻ ý tưởng
-                </button>
-                <button 
-                  onClick={() => setShowCreateSurvey(true)}
-                  className="w-full flex items-center p-3 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition-colors"
-                >
-                  <span className="mr-3">📊</span>
-                  Tạo khảo sát
-                </button>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-              <h3 className="text-lg font-bold text-gray-900 mb-4">Khám phá</h3>
-              <div className="space-y-2">
-                <a href="#" className="flex items-center p-3 bg-blue-50 text-blue-600 rounded-lg">
-                  <span className="mr-3">🏠</span>
-                  Trang chủ
-                </a>
-                <a href="#" className="flex items-center p-3 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">
-                  <span className="mr-3">💡</span>
-                  Innovation Hub
-                </a>
-                <a href="#" className="flex items-center p-3 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">
-                  <span className="mr-3">🤝</span>
-                  Collaboration
-                </a>
-                <a href="#" className="flex items-center p-3 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">
-                  <span className="mr-3">⚙️</span>
-                  Self-Service
-                </a>
-              </div>
-            </div>
-
-            {/* Outstanding Employees */}
-            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-              <div className="flex items-center mb-4">
-                <span className="text-2xl mr-2">🏆</span>
-                <h3 className="text-lg font-bold text-gray-900">CBNV xuất sắc</h3>
-              </div>
-              <div className="space-y-3">
-                {outstandingEmployees.map((employee, index) => (
-                  <div key={index} className="flex items-center p-3 bg-gray-50 rounded-lg">
-                    <div className="text-2xl mr-3">{employee.avatar}</div>
-                    <div className="flex-1">
-                      <h4 className="font-semibold text-gray-900">{employee.name}</h4>
-                      <p className="text-sm text-gray-600">{employee.role}</p>
-                    </div>
-                    <div className="bg-yellow-100 text-yellow-600 text-xs px-2 py-1 rounded-full font-bold">
-                      Rank {employee.rank}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Quick Survey */}
-            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-              <div className="flex items-center mb-4">
-                <span className="text-2xl mr-2">📊</span>
-                <h3 className="text-lg font-bold text-gray-900">Khảo sát nhanh</h3>
-              </div>
-              <p className="text-sm text-gray-700 mb-4">Bạn thích làm việc remote hay office?</p>
-              <div className="space-y-2 mb-4">
-                {surveyData.map((option, index) => (
-                  <div key={index} className="flex items-center">
-                    <input type="radio" name="survey" className="mr-2" />
-                    <span className="text-sm text-gray-600 flex-1">{option.option}</span>
-                    <span className="text-sm font-semibold text-blue-600">{option.percentage}%</span>
-                  </div>
-                ))}
-              </div>
-              <button className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-lg font-semibold transition-colors">
-                Bình chọn
-              </button>
-            </div>
-
-            {/* Company Information */}
-            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-              <h3 className="text-lg font-bold text-gray-900 mb-4">Thông tin công ty</h3>
-              <div className="space-y-2">
-                {companyInfo.map((info, index) => (
-                  <a key={index} href="#" className="flex items-center p-2 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">
-                    <span className="mr-3">{info.icon}</span>
-                    <span className="text-sm">{info.title}</span>
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            {/* Innovation Hub */}
-            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-              <div className="flex items-center mb-4">
-                <span className="text-2xl mr-2">💡</span>
-                <h3 className="text-lg font-bold text-gray-900">Innovation Hub</h3>
-              </div>
-              <div className="space-y-3">
-                <div className="p-3 bg-blue-50 rounded-lg">
-                  <h4 className="font-semibold text-gray-900 text-sm">Ý tưởng tháng</h4>
-                  <p className="text-xs text-gray-600 mt-1">AI Content Generator</p>
-                </div>
-                <div className="p-3 bg-green-50 rounded-lg">
-                  <h4 className="font-semibold text-gray-900 text-sm">Vote cao nhất</h4>
-                  <p className="text-xs text-gray-600 mt-1">Workplace Wellness Program</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Team Performance */}
-            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-              <div className="flex items-center mb-4">
-                <span className="text-2xl mr-2">📈</span>
-                <h3 className="text-lg font-bold text-gray-900">Hiệu suất team</h3>
-              </div>
-              <div className="space-y-3">
-                <div className="flex justify-between items-center">
-                  <span className="text-sm text-gray-600">Videos tháng này</span>
-                  <span className="text-sm font-bold text-green-600">+15%</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-sm text-gray-600">Engagement</span>
-                  <span className="text-sm font-bold text-blue-600">+8%</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-sm text-gray-600">Revenue</span>
-                  <span className="text-sm font-bold text-purple-600">+22%</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Recent Activities */}
-            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-              <div className="flex items-center mb-4">
-                <span className="text-2xl mr-2">⚡</span>
-                <h3 className="text-lg font-bold text-gray-900">Hoạt động gần đây</h3>
-              </div>
-              <div className="space-y-2">
-                <div className="text-xs text-gray-600">
-                  <span className="font-semibold">Minh Tuấn</span> đã tạo video mới
-                </div>
-                <div className="text-xs text-gray-600">
-                  <span className="font-semibold">Lan Anh</span> hoàn thành khóa học
-                </div>
-                <div className="text-xs text-gray-600">
-                  <span className="font-semibold">Team</span> đạt KPI tháng
-                </div>
-              </div>
-            </div>
-
-            {/* Quick Links */}
-            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-              <h3 className="text-lg font-bold text-gray-900 mb-4">Liên kết nhanh</h3>
-              <div className="space-y-2">
-                <a href="#" className="flex items-center p-2 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">
-                  <span className="mr-3">📊</span>
-                  <span className="text-sm">Báo cáo tháng</span>
-                </a>
-                <a href="#" className="flex items-center p-2 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">
-                  <span className="mr-3">📅</span>
-                  <span className="text-sm">Lịch sự kiện</span>
-                </a>
-                <a href="#" className="flex items-center p-2 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">
-                  <span className="mr-3">📚</span>
-                  <span className="text-sm">Tài liệu nội bộ</span>
-                </a>
-              </div>
-            </div>
-          </div>
-
           {/* Main Content - Wide */}
-          <div className="lg:col-span-3 space-y-6">
+          <div className="lg:col-span-3 space-y-6 lg:order-1">
             {/* Top Banner */}
             <div className="relative bg-gradient-to-r from-purple-600 to-orange-500 rounded-xl overflow-hidden">
               <div className="absolute inset-0 bg-black bg-opacity-20"></div>
@@ -864,6 +678,191 @@ const InternalSocialNetwork = () => {
             </div>
           </div>
 
+          {/* Right Sidebar - Narrow */}
+          <div className="lg:col-span-1 space-y-6 lg:order-2">
+            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+              <h3 className="text-lg font-bold text-gray-900 mb-4">Hành động nhanh</h3>
+              <div className="space-y-3">
+                <button 
+                  onClick={() => setShowCreatePost(true)}
+                  className="w-full flex items-center p-3 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors"
+                >
+                  <span className="mr-3">➕</span>
+                  Tạo bài viết
+                </button>
+                <button 
+                  onClick={() => setShowShareIdea(true)}
+                  className="w-full flex items-center p-3 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition-colors"
+                >
+                  <span className="mr-3">💡</span>
+                  Chia sẻ ý tưởng
+                </button>
+                <button 
+                  onClick={() => setShowCreateSurvey(true)}
+                  className="w-full flex items-center p-3 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition-colors"
+                >
+                  <span className="mr-3">📊</span>
+                  Tạo khảo sát
+                </button>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+              <h3 className="text-lg font-bold text-gray-900 mb-4">Khám phá</h3>
+              <div className="space-y-2">
+                <a href="#" className="flex items-center p-3 bg-blue-50 text-blue-600 rounded-lg">
+                  <span className="mr-3">🏠</span>
+                  Trang chủ
+                </a>
+                <a href="#" className="flex items-center p-3 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">
+                  <span className="mr-3">💡</span>
+                  Innovation Hub
+                </a>
+                <a href="#" className="flex items-center p-3 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">
+                  <span className="mr-3">🤝</span>
+                  Collaboration
+                </a>
+                <a href="#" className="flex items-center p-3 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">
+                  <span className="mr-3">⚙️</span>
+                  Self-Service
+                </a>
+              </div>
+            </div>
+
+            {/* Outstanding Employees */}
+            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+              <div className="flex items-center mb-4">
+                <span className="text-2xl mr-2">🏆</span>
+                <h3 className="text-lg font-bold text-gray-900">CBNV xuất sắc</h3>
+              </div>
+              <div className="space-y-3">
+                {outstandingEmployees.map((employee, index) => (
+                  <div key={index} className="flex items-center p-3 bg-gray-50 rounded-lg">
+                    <div className="text-2xl mr-3">{employee.avatar}</div>
+                    <div className="flex-1">
+                      <h4 className="font-semibold text-gray-900">{employee.name}</h4>
+                      <p className="text-sm text-gray-600">{employee.role}</p>
+                    </div>
+                    <div className="bg-yellow-100 text-yellow-600 text-xs px-2 py-1 rounded-full font-bold">
+                      Rank {employee.rank}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Quick Survey */}
+            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+              <div className="flex items-center mb-4">
+                <span className="text-2xl mr-2">📊</span>
+                <h3 className="text-lg font-bold text-gray-900">Khảo sát nhanh</h3>
+              </div>
+              <p className="text-sm text-gray-700 mb-4">Bạn thích làm việc remote hay office?</p>
+              <div className="space-y-2 mb-4">
+                {surveyData.map((option, index) => (
+                  <div key={index} className="flex items-center">
+                    <input type="radio" name="survey" className="mr-2" />
+                    <span className="text-sm text-gray-600 flex-1">{option.option}</span>
+                    <span className="text-sm font-semibold text-blue-600">{option.percentage}%</span>
+                  </div>
+                ))}
+              </div>
+              <button className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-lg font-semibold transition-colors">
+                Bình chọn
+              </button>
+            </div>
+
+            {/* Company Information */}
+            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+              <h3 className="text-lg font-bold text-gray-900 mb-4">Thông tin công ty</h3>
+              <div className="space-y-2">
+                {companyInfo.map((info, index) => (
+                  <a key={index} href="#" className="flex items-center p-2 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">
+                    <span className="mr-3">{info.icon}</span>
+                    <span className="text-sm">{info.title}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            {/* Innovation Hub */}
+            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+              <div className="flex items-center mb-4">
+                <span className="text-2xl mr-2">💡</span>
+                <h3 className="text-lg font-bold text-gray-900">Innovation Hub</h3>
+              </div>
+              <div className="space-y-3">
+                <div className="p-3 bg-blue-50 rounded-lg">
+                  <h4 className="font-semibold text-gray-900 text-sm">Ý tưởng tháng</h4>
+                  <p className="text-xs text-gray-600 mt-1">AI Content Generator</p>
+                </div>
+                <div className="p-3 bg-green-50 rounded-lg">
+                  <h4 className="font-semibold text-gray-900 text-sm">Vote cao nhất</h4>
+                  <p className="text-xs text-gray-600 mt-1">Workplace Wellness Program</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Team Performance */}
+            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+              <div className="flex items-center mb-4">
+                <span className="text-2xl mr-2">📈</span>
+                <h3 className="text-lg font-bold text-gray-900">Hiệu suất team</h3>
+              </div>
+              <div className="space-y-3">
+                <div className="flex justify-between items-center">
+                  <span className="text-sm text-gray-600">Videos tháng này</span>
+                  <span className="text-sm font-bold text-green-600">+15%</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-sm text-gray-600">Engagement</span>
+                  <span className="text-sm font-bold text-blue-600">+8%</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-sm text-gray-600">Revenue</span>
+                  <span className="text-sm font-bold text-purple-600">+22%</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Recent Activities */}
+            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+              <div className="flex items-center mb-4">
+                <span className="text-2xl mr-2">⚡</span>
+                <h3 className="text-lg font-bold text-gray-900">Hoạt động gần đây</h3>
+              </div>
+              <div className="space-y-2">
+                <div className="text-xs text-gray-600">
+                  <span className="font-semibold">Minh Tuấn</span> đã tạo video mới
+                </div>
+                <div className="text-xs text-gray-600">
+                  <span className="font-semibold">Lan Anh</span> hoàn thành khóa học
+                </div>
+                <div className="text-xs text-gray-600">
+                  <span className="font-semibold">Team</span> đạt KPI tháng
+                </div>
+              </div>
+            </div>
+
+            {/* Quick Links */}
+            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+              <h3 className="text-lg font-bold text-gray-900 mb-4">Liên kết nhanh</h3>
+              <div className="space-y-2">
+                <a href="#" className="flex items-center p-2 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">
+                  <span className="mr-3">📊</span>
+                  <span className="text-sm">Báo cáo tháng</span>
+                </a>
+                <a href="#" className="flex items-center p-2 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">
+                  <span className="mr-3">📅</span>
+                  <span className="text-sm">Lịch sự kiện</span>
+                </a>
+                <a href="#" className="flex items-center p-2 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors">
+                  <span className="mr-3">📚</span>
+                  <span className="text-sm">Tài liệu nội bộ</span>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
