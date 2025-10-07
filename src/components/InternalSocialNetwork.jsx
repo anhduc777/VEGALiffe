@@ -2,6 +2,11 @@ import React, { useState } from 'react'
 
 const InternalSocialNetwork = () => {
   const [activeFilter, setActiveFilter] = useState('all')
+  const [showCreatePost, setShowCreatePost] = useState(false)
+  const [showShareIdea, setShowShareIdea] = useState(false)
+  const [showCreateSurvey, setShowCreateSurvey] = useState(false)
+  const [showEditProfile, setShowEditProfile] = useState(false)
+  const [showNotifications, setShowNotifications] = useState(false)
 
   // Sample data
   const posts = [
@@ -104,14 +109,20 @@ const InternalSocialNetwork = () => {
               </div>
             </div>
             <div className="flex items-center space-x-4">
-              <button className="p-2 text-gray-600 hover:text-blue-600 transition-colors relative">
+              <button 
+                onClick={() => setShowNotifications(true)}
+                className="p-2 text-gray-600 hover:text-blue-600 transition-colors relative"
+              >
                 🔔
                 <span className="absolute -top-1 -right-1 h-3 w-3 bg-red-500 rounded-full text-xs text-white flex items-center justify-center">3</span>
               </button>
               <button className="p-2 text-gray-600 hover:text-blue-600 transition-colors">
                 ⚙️
               </button>
-              <div className="h-8 w-8 bg-gradient-to-r from-pink-400 to-purple-500 rounded-full flex items-center justify-center">
+              <div 
+                onClick={() => setShowEditProfile(true)}
+                className="h-8 w-8 bg-gradient-to-r from-pink-400 to-purple-500 rounded-full flex items-center justify-center cursor-pointer hover:scale-105 transition-transform"
+              >
                 <span className="text-white text-sm font-bold">👩</span>
               </div>
             </div>
@@ -126,15 +137,24 @@ const InternalSocialNetwork = () => {
             <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-6">
               <h3 className="text-lg font-bold text-gray-900 mb-4">Hành động nhanh</h3>
               <div className="space-y-3">
-                <button className="w-full flex items-center p-3 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors">
+                <button 
+                  onClick={() => setShowCreatePost(true)}
+                  className="w-full flex items-center p-3 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors"
+                >
                   <span className="mr-3">➕</span>
                   Tạo bài viết
                 </button>
-                <button className="w-full flex items-center p-3 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition-colors">
+                <button 
+                  onClick={() => setShowShareIdea(true)}
+                  className="w-full flex items-center p-3 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition-colors"
+                >
                   <span className="mr-3">💡</span>
                   Chia sẻ ý tưởng
                 </button>
-                <button className="w-full flex items-center p-3 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition-colors">
+                <button 
+                  onClick={() => setShowCreateSurvey(true)}
+                  className="w-full flex items-center p-3 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition-colors"
+                >
                   <span className="mr-3">📊</span>
                   Tạo khảo sát
                 </button>
@@ -384,6 +404,202 @@ const InternalSocialNetwork = () => {
           </div>
         </div>
       </div>
+
+      {/* Popup Modals */}
+      
+      {/* Create Post Popup */}
+      {showCreatePost && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-xl p-6 w-full max-w-md mx-4">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-lg font-bold text-gray-900">Tạo bài viết mới</h3>
+              <button 
+                onClick={() => setShowCreatePost(false)}
+                className="text-gray-400 hover:text-gray-600"
+              >
+                ✕
+              </button>
+            </div>
+            <textarea 
+              placeholder="Chia sẻ những gì bạn đang nghĩ..."
+              className="w-full h-32 p-3 border border-gray-200 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+            <div className="flex items-center justify-between mt-4">
+              <div className="flex items-center space-x-2">
+                <button className="p-2 text-gray-400 hover:text-blue-500">📷</button>
+                <button className="p-2 text-gray-400 hover:text-blue-500">🎥</button>
+                <button className="p-2 text-gray-400 hover:text-blue-500">📄</button>
+              </div>
+              <button className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold transition-colors">
+                Đăng bài
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Share Idea Popup */}
+      {showShareIdea && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-xl p-6 w-full max-w-md mx-4">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-lg font-bold text-gray-900">Chia sẻ ý tưởng</h3>
+              <button 
+                onClick={() => setShowShareIdea(false)}
+                className="text-gray-400 hover:text-gray-600"
+              >
+                ✕
+              </button>
+            </div>
+            <input 
+              type="text" 
+              placeholder="Tiêu đề ý tưởng..."
+              className="w-full p-3 border border-gray-200 rounded-lg mb-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+            <textarea 
+              placeholder="Mô tả chi tiết ý tưởng của bạn..."
+              className="w-full h-32 p-3 border border-gray-200 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+            <div className="flex items-center justify-between mt-4">
+              <select className="p-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <option>Chọn danh mục</option>
+                <option>Innovation</option>
+                <option>Process Improvement</option>
+                <option>Product Development</option>
+              </select>
+              <button className="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-2 rounded-lg font-semibold transition-colors">
+                Gửi ý tưởng
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Create Survey Popup */}
+      {showCreateSurvey && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-xl p-6 w-full max-w-md mx-4">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-lg font-bold text-gray-900">Tạo khảo sát</h3>
+              <button 
+                onClick={() => setShowCreateSurvey(false)}
+                className="text-gray-400 hover:text-gray-600"
+              >
+                ✕
+              </button>
+            </div>
+            <input 
+              type="text" 
+              placeholder="Tiêu đề khảo sát..."
+              className="w-full p-3 border border-gray-200 rounded-lg mb-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+            <div className="space-y-2 mb-4">
+              <input 
+                type="text" 
+                placeholder="Tùy chọn 1..."
+                className="w-full p-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+              <input 
+                type="text" 
+                placeholder="Tùy chọn 2..."
+                className="w-full p-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+              <button className="text-blue-500 hover:text-blue-600 text-sm">+ Thêm tùy chọn</button>
+            </div>
+            <button className="w-full bg-green-500 hover:bg-green-600 text-white py-2 rounded-lg font-semibold transition-colors">
+              Tạo khảo sát
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Edit Profile Popup */}
+      {showEditProfile && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-xl p-6 w-full max-w-md mx-4">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-lg font-bold text-gray-900">Chỉnh sửa hồ sơ</h3>
+              <button 
+                onClick={() => setShowEditProfile(false)}
+                className="text-gray-400 hover:text-gray-600"
+              >
+                ✕
+              </button>
+            </div>
+            <div className="text-center mb-4">
+              <div className="h-16 w-16 bg-gradient-to-r from-pink-400 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-2">
+                <span className="text-white text-2xl font-bold">👩</span>
+              </div>
+              <button className="text-blue-500 hover:text-blue-600 text-sm">Thay đổi ảnh đại diện</button>
+            </div>
+            <div className="space-y-3">
+              <input 
+                type="text" 
+                defaultValue="Nguyễn Thị Mai"
+                className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+              <input 
+                type="text" 
+                defaultValue="Senior Video Producer"
+                className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+              <textarea 
+                defaultValue="Chuyên sản xuất video quảng cáo và nội dung sáng tạo cho các thương hiệu hàng đầu."
+                className="w-full h-20 p-3 border border-gray-200 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+            <button className="w-full bg-purple-500 hover:bg-purple-600 text-white py-2 rounded-lg font-semibold transition-colors mt-4">
+              Lưu thay đổi
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Notifications Popup */}
+      {showNotifications && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-xl p-6 w-full max-w-md mx-4">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-lg font-bold text-gray-900">Thông báo</h3>
+              <button 
+                onClick={() => setShowNotifications(false)}
+                className="text-gray-400 hover:text-gray-600"
+              >
+                ✕
+              </button>
+            </div>
+            <div className="space-y-3">
+              <div className="flex items-start p-3 bg-blue-50 rounded-lg">
+                <div className="text-blue-500 mr-3">🎉</div>
+                <div>
+                  <p className="font-semibold text-gray-900">Chúc mừng!</p>
+                  <p className="text-sm text-gray-600">Bạn đã được đề xuất cho giải "Nhân viên xuất sắc tháng"</p>
+                  <p className="text-xs text-gray-400 mt-1">2 giờ trước</p>
+                </div>
+              </div>
+              <div className="flex items-start p-3 bg-green-50 rounded-lg">
+                <div className="text-green-500 mr-3">📊</div>
+                <div>
+                  <p className="font-semibold text-gray-900">Khảo sát mới</p>
+                  <p className="text-sm text-gray-600">Khảo sát hài lòng Q4 đã sẵn sàng</p>
+                  <p className="text-xs text-gray-400 mt-1">1 ngày trước</p>
+                </div>
+              </div>
+              <div className="flex items-start p-3 bg-yellow-50 rounded-lg">
+                <div className="text-yellow-500 mr-3">💡</div>
+                <div>
+                  <p className="font-semibold text-gray-900">Ý tưởng được đánh giá</p>
+                  <p className="text-sm text-gray-600">Ý tưởng "AI Content Generator" đã được team review</p>
+                  <p className="text-xs text-gray-400 mt-1">3 ngày trước</p>
+                </div>
+              </div>
+            </div>
+            <button className="w-full bg-gray-100 hover:bg-gray-200 text-gray-700 py-2 rounded-lg font-semibold transition-colors mt-4">
+              Xem tất cả
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
