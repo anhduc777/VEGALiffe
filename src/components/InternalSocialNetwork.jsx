@@ -26,6 +26,25 @@ const InternalSocialNetwork = () => {
         shares: 8,
         views: 156
       },
+      likedBy: [
+        { name: 'Trần Thị Mai', avatar: '👩' },
+        { name: 'Lê Văn Hùng', avatar: '👨' },
+        { name: 'Nguyễn Thị Hoa', avatar: '👩' }
+      ],
+      topComments: [
+        {
+          author: { name: 'Trần Thị Mai', avatar: '👩', role: 'Senior Producer' },
+          content: 'Cảm ơn team đã làm việc tuyệt vời! Rất tự hào về thành quả này 💪',
+          time: '1 giờ trước',
+          likes: 8
+        },
+        {
+          author: { name: 'Lê Văn Hùng', avatar: '👨', role: 'Marketing Manager' },
+          content: 'Series này thực sự đã tạo ra impact lớn cho thương hiệu! 👏',
+          time: '2 giờ trước',
+          likes: 5
+        }
+      ],
       tags: ['#TeamWork', '#Success', '#VideoProduction']
     },
     {
@@ -52,6 +71,18 @@ const InternalSocialNetwork = () => {
         shares: 5,
         views: 89
       },
+      likedBy: [
+        { name: 'Nguyễn Văn Đức', avatar: '👨‍💼' },
+        { name: 'Phạm Thị Lan', avatar: '👩‍💼' }
+      ],
+      topComments: [
+        {
+          author: { name: 'Nguyễn Văn Đức', avatar: '👨‍💼', role: 'CEO' },
+          content: 'Kết quả rất tích cực! Cảm ơn team HR đã thực hiện khảo sát này.',
+          time: '3 giờ trước',
+          likes: 12
+        }
+      ],
       tags: ['#Survey', '#EmployeeEngagement']
     },
     {
@@ -534,26 +565,35 @@ const InternalSocialNetwork = () => {
             {/* Posts Feed */}
             <div className="space-y-6">
               {posts.map((post) => (
-                <div key={post.id} className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+                <div key={post.id} className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow duration-200">
                   {/* Post Header */}
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center space-x-3">
-                      <div className="text-2xl">{post.author.avatar}</div>
+                      <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center text-xl text-white shadow-sm">
+                        {post.author.avatar}
+                      </div>
                       <div>
-                        <h4 className="font-bold text-gray-900">{post.author.name}</h4>
-                        <p className="text-sm text-gray-500">{post.author.role} • {post.author.time}</p>
+                        <h4 className="font-bold text-gray-900 text-lg">{post.author.name}</h4>
+                        <p className="text-sm text-gray-500 flex items-center">
+                          <span>{post.author.role}</span>
+                          <span className="mx-2">•</span>
+                          <span>{post.author.time}</span>
+                        </p>
                       </div>
                     </div>
+                    <button className="text-gray-400 hover:text-gray-600 p-2 hover:bg-gray-100 rounded-full transition-colors">
+                      <span className="text-xl">⋯</span>
+                    </button>
                   </div>
 
                   {/* Post Content */}
                   <div className="mb-4">
-                    <p className="text-gray-900 leading-relaxed">{post.content}</p>
+                    <p className="text-gray-900 leading-relaxed text-base">{post.content}</p>
                     
                     {/* Tags */}
-                    <div className="flex flex-wrap gap-2 mt-3">
+                    <div className="flex flex-wrap gap-2 mt-4">
                       {post.tags.map((tag, index) => (
-                        <span key={index} className="bg-blue-100 text-blue-600 text-sm px-2 py-1 rounded-full">
+                        <span key={index} className="bg-blue-50 text-blue-600 text-sm px-3 py-1 rounded-full hover:bg-blue-100 transition-colors cursor-pointer">
                           {tag}
                         </span>
                       ))}
@@ -562,55 +602,101 @@ const InternalSocialNetwork = () => {
 
                   {/* Post Media */}
                   {post.image && (
-                    <div className="mb-4 p-4 bg-gray-50 rounded-lg">
-                      <div className="text-4xl text-center">{post.image}</div>
+                    <div className="mb-4 p-6 bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl">
+                      <div className="text-5xl text-center">{post.image}</div>
                     </div>
                   )}
 
                   {post.chart && (
-                    <div className="mb-4 p-4 bg-gray-50 rounded-lg">
-                      <h5 className="font-semibold text-gray-900 mb-3">Kết quả khảo sát</h5>
-                      <div className="flex items-center justify-center space-x-4">
+                    <div className="mb-4 p-6 bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl border border-blue-100">
+                      <h5 className="font-bold text-gray-900 mb-4 text-lg">📊 Kết quả khảo sát</h5>
+                      <div className="flex items-center justify-center space-x-6">
                         {post.chart.data.map((item, index) => (
                           <div key={index} className="text-center">
                             <div 
-                              className="w-16 h-16 rounded-full flex items-center justify-center text-white font-bold mb-2"
+                              className="w-20 h-20 rounded-full flex items-center justify-center text-white font-bold mb-3 shadow-lg"
                               style={{ backgroundColor: item.color }}
                             >
                               {item.value}%
                             </div>
-                            <p className="text-xs text-gray-600">{item.label}</p>
+                            <p className="text-sm text-gray-700 font-medium">{item.label}</p>
                           </div>
                         ))}
                       </div>
                     </div>
                   )}
 
-                  {/* Engagement */}
+                  {/* Likes Section */}
+                  {post.likedBy && post.likedBy.length > 0 && (
+                    <div className="flex items-center py-3 border-t border-gray-100">
+                      <div className="flex -space-x-2 mr-3">
+                        {post.likedBy.slice(0, 3).map((user, index) => (
+                          <div key={index} className="w-6 h-6 bg-white rounded-full border-2 border-white flex items-center justify-center text-xs shadow-sm">
+                            {user.avatar}
+                          </div>
+                        ))}
+                      </div>
+                      <div className="flex items-center text-sm text-gray-600">
+                        <span className="font-semibold">{post.likedBy[0].name}</span>
+                        {post.likedBy.length > 1 && (
+                          <>
+                            <span className="mx-1">và</span>
+                            <span className="font-semibold">{post.engagement.likes - 1} người khác</span>
+                          </>
+                        )}
+                        <span className="ml-1">đã thích</span>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Top Comments */}
+                  {post.topComments && post.topComments.length > 0 && (
+                    <div className="border-t border-gray-100 pt-4">
+                      <div className="space-y-3">
+                        {post.topComments.map((comment, index) => (
+                          <div key={index} className="flex space-x-3">
+                            <div className="text-lg flex-shrink-0">{comment.author.avatar}</div>
+                            <div className="flex-1">
+                              <div className="bg-gray-50 rounded-2xl px-4 py-2">
+                                <div className="flex items-center space-x-2 mb-1">
+                                  <span className="font-semibold text-gray-900 text-sm">{comment.author.name}</span>
+                                  <span className="text-xs text-gray-500">{comment.author.role}</span>
+                                </div>
+                                <p className="text-gray-900 text-sm">{comment.content}</p>
+                              </div>
+                              <div className="flex items-center space-x-4 mt-1 ml-4">
+                                <span className="text-xs text-gray-500">{comment.time}</span>
+                                {comment.likes > 0 && (
+                                  <span className="text-xs text-gray-500">{comment.likes} thích</span>
+                                )}
+                                <button className="text-xs text-gray-500 hover:text-blue-600">Phản hồi</button>
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Engagement Stats */}
                   <div className="flex items-center justify-between pt-4 border-t border-gray-100">
                     <div className="flex items-center space-x-6">
-                      <button className="flex items-center text-gray-500 hover:text-red-500 transition-colors">
-                        <span className="mr-2">❤️</span>
+                      <button className="flex items-center text-gray-500 hover:text-red-500 transition-colors group">
+                        <span className="mr-2 text-xl group-hover:scale-110 transition-transform">❤️</span>
                         <span className="text-sm font-semibold">{post.engagement.likes}</span>
                       </button>
-                      <button className="flex items-center text-gray-500 hover:text-blue-500 transition-colors">
-                        <span className="mr-2">💬</span>
+                      <button className="flex items-center text-gray-500 hover:text-blue-500 transition-colors group">
+                        <span className="mr-2 text-xl group-hover:scale-110 transition-transform">💬</span>
                         <span className="text-sm font-semibold">{post.engagement.comments}</span>
                       </button>
-                      <button className="flex items-center text-gray-500 hover:text-green-500 transition-colors">
-                        <span className="mr-2">🔄</span>
+                      <button className="flex items-center text-gray-500 hover:text-green-500 transition-colors group">
+                        <span className="mr-2 text-xl group-hover:scale-110 transition-transform">🔄</span>
                         <span className="text-sm font-semibold">{post.engagement.shares}</span>
                       </button>
                     </div>
                     <span className="text-sm text-gray-500">{post.engagement.views} lượt xem</span>
                   </div>
 
-                  {/* Action Buttons */}
-                  <div className="flex items-center justify-center space-x-8 mt-4 pt-4 border-t border-gray-100">
-                    <button className="text-gray-500 hover:text-red-500 transition-colors">Thích</button>
-                    <button className="text-gray-500 hover:text-blue-500 transition-colors">Bình luận</button>
-                    <button className="text-gray-500 hover:text-green-500 transition-colors">Chia sẻ</button>
-                  </div>
                 </div>
               ))}
 
