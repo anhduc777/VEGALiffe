@@ -747,13 +747,9 @@ const EmployeeProfile = () => {
 
           {/* Right Column - Narrow */}
           <div className="space-y-6">
-            {/* Work Management */}
+            {/* Monthly Goals */}
             <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-6 backdrop-blur-sm">
-              <h3 className="text-xl font-bold text-gray-900 mb-6">Quản trị công việc</h3>
-              
-              {/* Monthly Goals */}
-              <div className="mb-6">
-                <h4 className="text-lg font-semibold text-gray-900 mb-4">Mục tiêu tháng này</h4>
+              <h3 className="text-xl font-bold text-gray-900 mb-6">Mục tiêu tháng này</h3>
                 <div className="space-y-4">
                   {monthlyGoals.map((goal, index) => (
                     <div key={index}>
@@ -774,9 +770,9 @@ const EmployeeProfile = () => {
                 </div>
               </div>
 
-              {/* Work Schedule */}
-              <div>
-                <h4 className="text-lg font-semibold text-gray-900 mb-4">Lịch làm việc</h4>
+            {/* Work Schedule */}
+            <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-6 backdrop-blur-sm">
+              <h3 className="text-xl font-bold text-gray-900 mb-6">Lịch làm việc</h3>
                 <div className="grid grid-cols-7 gap-1 mb-2">
                   {['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'].map((day) => (
                     <div key={day} className="text-center text-xs font-semibold text-gray-500 py-1">
