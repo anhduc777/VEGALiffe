@@ -24,25 +24,25 @@ const EmployeeProfile = () => {
   ]
 
   const incomeData = [
-    { month: 'T1', current: 75, previous: 70 },
-    { month: 'T2', current: 82, previous: 75 },
-    { month: 'T3', current: 88, previous: 80 },
-    { month: 'T4', current: 95, previous: 85 },
-    { month: 'T5', current: 92, previous: 88 },
-    { month: 'T6', current: 98, previous: 90 },
-    { month: 'T7', current: 105, previous: 95 },
-    { month: 'T8', current: 112, previous: 100 },
-    { month: 'T9', current: 108, previous: 105 },
-    { month: 'T10', current: 115, previous: 110 },
-    { month: 'T11', current: 120, previous: 115 },
-    { month: 'T12', current: 125, previous: 120 }
+    { month: 'T1', current: 45, previous: 42 },
+    { month: 'T2', current: 48, previous: 45 },
+    { month: 'T3', current: 50, previous: 47 },
+    { month: 'T4', current: 52, previous: 49 },
+    { month: 'T5', current: 51, previous: 48 },
+    { month: 'T6', current: 53, previous: 50 },
+    { month: 'T7', current: 54, previous: 51 },
+    { month: 'T8', current: 55, previous: 52 },
+    { month: 'T9', current: 54, previous: 51 },
+    { month: 'T10', current: 56, previous: 53 },
+    { month: 'T11', current: 57, previous: 54 },
+    { month: 'T12', current: 56, previous: 55 }
   ]
 
   const salaryBreakdown = [
-    { name: 'Base Salary', value: 60, color: '#3b82f6', amount: '75M VND' },
-    { name: 'Performance Bonus', value: 25, color: '#10b981', amount: '31.25M VND' },
-    { name: 'Project Bonus', value: 10, color: '#f59e0b', amount: '12.5M VND' },
-    { name: 'Other Benefits', value: 5, color: '#8b5cf6', amount: '6.25M VND' }
+    { name: 'Base Salary', value: 60, color: '#3b82f6', amount: '33.6M VND' },
+    { name: 'Performance Bonus', value: 25, color: '#10b981', amount: '14M VND' },
+    { name: 'Project Bonus', value: 10, color: '#f59e0b', amount: '5.6M VND' },
+    { name: 'Other Benefits', value: 5, color: '#8b5cf6', amount: '2.8M VND' }
   ]
 
   const benefits = [
@@ -187,11 +187,11 @@ const EmployeeProfile = () => {
                 
                 <div className="relative h-48">
                   <div className="absolute left-0 top-0 h-full flex flex-col justify-between text-xs text-gray-400">
-                    <span>130M</span>
-                    <span>110M</span>
-                    <span>90M</span>
-                    <span>70M</span>
+                    <span>60M</span>
+                    <span>55M</span>
                     <span>50M</span>
+                    <span>45M</span>
+                    <span>40M</span>
                   </div>
                   
                   <svg className="w-full h-full" viewBox="0 0 400 200">
@@ -206,7 +206,7 @@ const EmployeeProfile = () => {
                     {/* 2024 line */}
                     <polyline
                       points={incomeData.map((item, index) => 
-                        `${50 + (index * 350 / 11)},${180 - ((item.current - 50) / 80) * 160}`
+                        `${50 + (index * 350 / 11)},${180 - ((item.current - 40) / 20) * 160}`
                       ).join(' ')}
                       fill="none"
                       stroke="#3b82f6"
@@ -217,7 +217,7 @@ const EmployeeProfile = () => {
                     {/* 2023 line */}
                     <polyline
                       points={incomeData.map((item, index) => 
-                        `${50 + (index * 350 / 11)},${180 - ((item.previous - 50) / 80) * 160}`
+                        `${50 + (index * 350 / 11)},${180 - ((item.previous - 40) / 20) * 160}`
                       ).join(' ')}
                       fill="none"
                       stroke="#9ca3af"
@@ -230,14 +230,14 @@ const EmployeeProfile = () => {
                       <g key={index}>
                         <circle
                           cx={50 + (index * 350 / 11)}
-                          cy={180 - ((item.current - 50) / 80) * 160}
+                          cy={180 - ((item.current - 40) / 20) * 160}
                           r="4"
                           fill="#3b82f6"
                           className="hover:r-6 transition-all cursor-pointer"
                         />
                         <circle
                           cx={50 + (index * 350 / 11)}
-                          cy={180 - ((item.previous - 50) / 80) * 160}
+                          cy={180 - ((item.previous - 40) / 20) * 160}
                           r="3"
                           fill="#9ca3af"
                           className="hover:r-5 transition-all cursor-pointer"
@@ -275,43 +275,46 @@ const EmployeeProfile = () => {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 {/* Donut Chart */}
                 <div className="flex items-center justify-center">
-                  <div className="relative w-64 h-64">
-                    <svg className="w-full h-full" viewBox="0 0 200 200">
+                  <div className="relative w-72 h-72">
+                    <svg className="w-full h-full" viewBox="0 0 220 220">
                       {/* Background circle */}
-                      <circle cx="100" cy="100" r="80" fill="none" stroke="#e5e7eb" strokeWidth="16"/>
+                      <circle cx="110" cy="110" r="90" fill="none" stroke="#e5e7eb" strokeWidth="18"/>
                       
                       {/* Salary segments */}
                       {salaryBreakdown.map((item, index) => {
-                        const startAngle = index === 0 ? 0 : salaryBreakdown.slice(0, index).reduce((sum, prev) => sum + prev.value, 0) * 3.6 - 90;
+                        const startAngle = index === 0 ? -90 : salaryBreakdown.slice(0, index).reduce((sum, prev) => sum + prev.value, 0) * 3.6 - 90;
                         const endAngle = salaryBreakdown.slice(0, index + 1).reduce((sum, prev) => sum + prev.value, 0) * 3.6 - 90;
                         const largeArcFlag = item.value > 50 ? 1 : 0;
                         
-                        const x1 = 100 + 80 * Math.cos((startAngle * Math.PI) / 180);
-                        const y1 = 100 + 80 * Math.sin((startAngle * Math.PI) / 180);
-                        const x2 = 100 + 80 * Math.cos((endAngle * Math.PI) / 180);
-                        const y2 = 100 + 80 * Math.sin((endAngle * Math.PI) / 180);
+                        const x1 = 110 + 90 * Math.cos((startAngle * Math.PI) / 180);
+                        const y1 = 110 + 90 * Math.sin((startAngle * Math.PI) / 180);
+                        const x2 = 110 + 90 * Math.cos((endAngle * Math.PI) / 180);
+                        const y2 = 110 + 90 * Math.sin((endAngle * Math.PI) / 180);
                         
-                        const pathData = `M 100 100 L ${x1} ${y1} A 80 80 0 ${largeArcFlag} 1 ${x2} ${y2} Z`;
+                        const pathData = `M 110 110 L ${x1} ${y1} A 90 90 0 ${largeArcFlag} 1 ${x2} ${y2} Z`;
                         
                         return (
                           <path
                             key={index}
                             d={pathData}
                             fill={item.color}
-                            className="hover:opacity-80 transition-opacity cursor-pointer"
+                            className="hover:opacity-80 transition-opacity cursor-pointer drop-shadow-sm"
                           />
                         );
                       })}
                       
-                      {/* Inner circle */}
-                      <circle cx="100" cy="100" r="50" fill="white"/>
+                      {/* Inner circle with shadow */}
+                      <circle cx="110" cy="110" r="55" fill="white" stroke="#f3f4f6" strokeWidth="2"/>
                       
                       {/* Center text */}
-                      <text x="100" y="95" textAnchor="middle" className="text-lg font-bold text-gray-900">
-                        125M
+                      <text x="110" y="105" textAnchor="middle" className="text-xl font-bold text-gray-900">
+                        56M
                       </text>
-                      <text x="100" y="110" textAnchor="middle" className="text-sm text-gray-600">
+                      <text x="110" y="120" textAnchor="middle" className="text-sm text-gray-600">
                         VND Total
+                      </text>
+                      <text x="110" y="135" textAnchor="middle" className="text-xs text-gray-500">
+                        Tháng này
                       </text>
                     </svg>
                   </div>
@@ -341,9 +344,9 @@ const EmployeeProfile = () => {
                   
                   <div className="mt-4 p-4 bg-blue-50 rounded-lg">
                     <div className="text-center">
-                      <div className="text-2xl font-bold text-blue-600">125M VND</div>
+                      <div className="text-2xl font-bold text-blue-600">56M VND</div>
                       <div className="text-sm text-blue-800">Tổng thu nhập tháng này</div>
-                      <div className="text-xs text-blue-600 mt-1">Tăng 5M so với tháng trước</div>
+                      <div className="text-xs text-blue-600 mt-1">Tăng 1M so với tháng trước</div>
                     </div>
                   </div>
                 </div>
@@ -375,7 +378,7 @@ const EmployeeProfile = () => {
                     <p className="text-sm text-gray-600">Bao gồm tất cả benefits và bảo hiểm</p>
                   </div>
                   <div className="text-right">
-                    <div className="text-2xl font-bold text-blue-600">85M VND</div>
+                    <div className="text-2xl font-bold text-blue-600">38M VND</div>
                     <div className="text-sm text-blue-800">~68% lương base</div>
                   </div>
                 </div>
