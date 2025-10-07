@@ -192,6 +192,18 @@ const RevenueDashboard = () => {
             
             {/* Line Chart */}
             <div className="relative h-64 bg-gray-50 rounded-lg p-4">
+              {/* Legend */}
+              <div className="flex justify-end space-x-4 text-xs mb-4">
+                <div className="flex items-center">
+                  <div className="w-4 h-0.5 bg-blue-500 mr-2"></div>
+                  <span className="text-gray-600 font-medium">2024</span>
+                </div>
+                <div className="flex items-center">
+                  <div className="w-4 h-0.5 bg-gray-400 mr-2"></div>
+                  <span className="text-gray-600 font-medium">2023</span>
+                </div>
+              </div>
+              
               {/* Y-axis */}
               <div className="absolute left-0 top-0 h-full flex flex-col justify-between text-sm text-gray-400">
                 <span>90M</span>
@@ -209,16 +221,57 @@ const RevenueDashboard = () => {
                   ))}
                 </div>
                 
-                {/* Data Points and Line */}
+                {/* SVG Lines */}
+                <svg className="absolute inset-0 w-full h-full pointer-events-none">
+                  {/* 2023 Line (Previous Year) */}
+                  <polyline
+                    points={revenueData.map((item, index) => {
+                      const x = (index / (revenueData.length - 1)) * 100
+                      const y = 100 - (item.previous / 90) * 100
+                      return `${x}%,${y}%`
+                    }).join(' ')}
+                    fill="none"
+                    stroke="#9ca3af"
+                    strokeWidth="2"
+                    strokeDasharray="5,5"
+                    className="transition-all duration-1000 ease-out"
+                  />
+                  
+                  {/* 2024 Line (Current Year) */}
+                  <polyline
+                    points={revenueData.map((item, index) => {
+                      const x = (index / (revenueData.length - 1)) * 100
+                      const y = 100 - (item.revenue / 90) * 100
+                      return `${x}%,${y}%`
+                    }).join(' ')}
+                    fill="none"
+                    stroke="#3b82f6"
+                    strokeWidth="3"
+                    className="transition-all duration-1000 ease-out"
+                  />
+                </svg>
+                
+                {/* Data Points */}
                 <div className="relative h-full flex items-end justify-between">
                   {revenueData.map((item, index) => {
-                    const height = (item.revenue / 90) * 100
+                    const currentHeight = (item.revenue / 90) * 100
+                    const previousHeight = (item.previous / 90) * 100
                     return (
                       <div key={index} className="flex flex-col items-center relative">
+                        {/* Previous Year Point */}
+                        <div 
+                          className="absolute w-2 h-2 bg-gray-400 rounded-full border border-white shadow-sm"
+                          style={{ bottom: `${previousHeight}%` }}
+                          title={`2023: ${item.previous}M VND`}
+                        ></div>
+                        
+                        {/* Current Year Point */}
                         <div 
                           className="absolute w-3 h-3 bg-blue-500 rounded-full border-2 border-white shadow-sm"
-                          style={{ bottom: `${height}%` }}
+                          style={{ bottom: `${currentHeight}%` }}
+                          title={`2024: ${item.revenue}M VND`}
                         ></div>
+                        
                         <div className="absolute -bottom-6 text-xs font-semibold text-gray-600">
                           {item.month}
                         </div>
@@ -229,20 +282,6 @@ const RevenueDashboard = () => {
                     )
                   })}
                 </div>
-                
-                {/* SVG Line */}
-                <svg className="absolute inset-0 w-full h-full">
-                  <polyline
-                    points={revenueData.map((item, index) => {
-                      const x = (index / (revenueData.length - 1)) * 100
-                      const y = 100 - (item.revenue / 90) * 100
-                      return `${x}%,${y}%`
-                    }).join(' ')}
-                    fill="none"
-                    stroke="#3b82f6"
-                    strokeWidth="3"
-                  />
-                </svg>
               </div>
             </div>
           </div>
