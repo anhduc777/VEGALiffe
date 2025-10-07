@@ -4,20 +4,20 @@ const RevenueDashboard = () => {
   const [timeFilter, setTimeFilter] = useState('day')
   const [contentFilter, setContentFilter] = useState('all')
 
-  // Sample data - Rich data for demo
+  // Sample data - Rich data for demo (in millions VND)
   const revenueData = [
-    { month: 'T1', revenue: 45, target: 40, ads: 12, organic: 33, previous: 38 },
-    { month: 'T2', revenue: 52, target: 42, ads: 15, organic: 37, previous: 45 },
-    { month: 'T3', revenue: 48, target: 44, ads: 13, organic: 35, previous: 52 },
-    { month: 'T4', revenue: 62, target: 46, ads: 18, organic: 44, previous: 48 },
-    { month: 'T5', revenue: 58, target: 48, ads: 16, organic: 42, previous: 62 },
-    { month: 'T6', revenue: 68, target: 50, ads: 20, organic: 48, previous: 58 },
-    { month: 'T7', revenue: 72, target: 52, ads: 22, organic: 50, previous: 68 },
-    { month: 'T8', revenue: 68, target: 54, ads: 20, organic: 48, previous: 72 },
-    { month: 'T9', revenue: 72, target: 56, ads: 21, organic: 51, previous: 68 },
-    { month: 'T10', revenue: 78, target: 58, ads: 23, organic: 55, previous: 72 },
-    { month: 'T11', revenue: 82, target: 60, ads: 25, organic: 57, previous: 78 },
-    { month: 'T12', revenue: 85, target: 62, ads: 22, organic: 63, previous: 82 }
+    { month: 'T1', revenue: 45, target: 40, ads: 12, organic: 33, previous: 38, value: 45 },
+    { month: 'T2', revenue: 52, target: 42, ads: 15, organic: 37, previous: 45, value: 52 },
+    { month: 'T3', revenue: 48, target: 44, ads: 13, organic: 35, previous: 52, value: 48 },
+    { month: 'T4', revenue: 62, target: 46, ads: 18, organic: 44, previous: 48, value: 62 },
+    { month: 'T5', revenue: 58, target: 48, ads: 16, organic: 42, previous: 62, value: 58 },
+    { month: 'T6', revenue: 68, target: 50, ads: 20, organic: 48, previous: 58, value: 68 },
+    { month: 'T7', revenue: 72, target: 52, ads: 22, organic: 50, previous: 68, value: 72 },
+    { month: 'T8', revenue: 68, target: 54, ads: 20, organic: 48, previous: 72, value: 68 },
+    { month: 'T9', revenue: 72, target: 56, ads: 21, organic: 51, previous: 68, value: 72 },
+    { month: 'T10', revenue: 78, target: 58, ads: 23, organic: 55, previous: 72, value: 78 },
+    { month: 'T11', revenue: 82, target: 60, ads: 25, organic: 57, previous: 78, value: 82 },
+    { month: 'T12', revenue: 85, target: 62, ads: 22, organic: 63, previous: 82, value: 85 }
   ]
 
   const mediaChannels = [
@@ -27,7 +27,7 @@ const RevenueDashboard = () => {
       icon: '▶️',
       subscribers: '1.2M',
       views: '45.8M',
-      revenue: '$18,450'
+      revenue: '₫18.45M'
     },
     {
       name: 'VEGA Lifestyle',
@@ -35,7 +35,7 @@ const RevenueDashboard = () => {
       icon: '🎵',
       subscribers: '850K',
       views: '28.5M',
-      revenue: '$12,340'
+      revenue: '₫12.34M'
     },
     {
       name: 'VEGA Music',
@@ -43,7 +43,7 @@ const RevenueDashboard = () => {
       icon: '▶️',
       subscribers: '680K',
       views: '15.2M',
-      revenue: '$8,920'
+      revenue: '₫8.92M'
     }
   ]
 
@@ -53,8 +53,8 @@ const RevenueDashboard = () => {
       category: 'Tech Review',
       time: '2 days ago',
       views: '2.4M views',
-      revenue: '$3,240 revenue',
-      cpm: '$1.35 CPM',
+      revenue: '₫3.24M revenue',
+      cpm: '₫1.35K CPM',
       thumbnail: '📱'
     },
     {
@@ -62,8 +62,8 @@ const RevenueDashboard = () => {
       category: 'Vlog',
       time: '5 days ago',
       views: '1.8M views',
-      revenue: '$2,160 revenue',
-      cpm: '$1.20 CPM',
+      revenue: '₫2.16M revenue',
+      cpm: '₫1.20K CPM',
       thumbnail: '☀️'
     },
     {
@@ -71,8 +71,8 @@ const RevenueDashboard = () => {
       category: 'Music',
       time: '1 week ago',
       views: '950K views',
-      revenue: '$1,140 revenue',
-      cpm: '$1.20 CPM',
+      revenue: '₫1.14M revenue',
+      cpm: '₫1.20K CPM',
       thumbnail: '🎵'
     }
   ]
@@ -84,7 +84,7 @@ const RevenueDashboard = () => {
       videos: 15,
       views: '8.2M',
       revenuePercent: 65,
-      revenue: '$28,450',
+      revenue: '₫28.45M',
       color: 'green'
     },
     {
@@ -93,7 +93,7 @@ const RevenueDashboard = () => {
       videos: 8,
       views: '3.1M',
       revenuePercent: 20,
-      revenue: '$8,920',
+      revenue: '₫8.92M',
       color: 'blue'
     },
     {
@@ -102,15 +102,15 @@ const RevenueDashboard = () => {
       videos: 6,
       views: '2.4M',
       revenuePercent: 15,
-      revenue: '$6,630',
+      revenue: '₫6.63M',
       color: 'orange'
     }
   ]
 
   const revenueSummary = [
-    { period: 'Today', icon: '💰', amount: '$24,650', change: '+12.5%', color: 'green' },
-    { period: 'This Week', icon: '📅', amount: '$156,420', change: '+8.3%', color: 'green' },
-    { period: 'This Month', icon: '📊', amount: '$642,850', change: '+15.7%', color: 'purple' }
+    { period: 'Today', icon: '💰', amount: '₫24.65M', change: '+12.5%', color: 'green' },
+    { period: 'This Week', icon: '📅', amount: '₫156.42M', change: '+8.3%', color: 'green' },
+    { period: 'This Month', icon: '📊', amount: '₫642.85M', change: '+15.7%', color: 'purple' }
   ]
 
   const contentCategories = [
@@ -121,9 +121,9 @@ const RevenueDashboard = () => {
   ]
 
   const revenueSources = [
-    { source: 'YouTube Ads', amount: '$28,450', percentage: 65 },
-    { source: 'TikTok Ads', amount: '$12,340', percentage: 28 },
-    { source: 'Sponsorship', amount: '$3,210', percentage: 7 }
+    { source: 'YouTube Ads', amount: '₫28.45M', percentage: 65 },
+    { source: 'TikTok Ads', amount: '₫12.34M', percentage: 28 },
+    { source: 'Sponsorship', amount: '₫3.21M', percentage: 7 }
   ]
 
   const regionRevenue = [
@@ -194,10 +194,10 @@ const RevenueDashboard = () => {
             <div className="relative h-64 bg-gray-50 rounded-lg p-4">
               {/* Y-axis */}
               <div className="absolute left-0 top-0 h-full flex flex-col justify-between text-sm text-gray-400">
-                <span>90k</span>
-                <span>70k</span>
-                <span>50k</span>
-                <span>30k</span>
+                <span>90M</span>
+                <span>70M</span>
+                <span>50M</span>
+                <span>30M</span>
               </div>
               
               {/* Chart Area */}
@@ -222,8 +222,8 @@ const RevenueDashboard = () => {
                         <div className="absolute -bottom-6 text-xs font-semibold text-gray-600">
                           {item.month}
                         </div>
-                        <div className="absolute -top-6 text-xs font-bold text-blue-600">
-                          {item.revenue}k
+                        <div className="absolute -top-6 text-xs font-bold text-blue-600 bg-white px-1 rounded">
+                          {item.revenue}M
                         </div>
                       </div>
                     )
